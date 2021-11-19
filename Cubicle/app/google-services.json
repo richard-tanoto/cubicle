@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "993371474950",
+    "project_id": "cubicle-89543",
+    "storage_bucket": "cubicle-89543.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:993371474950:android:1a67a46c0912583557c787",
+        "android_client_info": {
+          "package_name": "com.example.cubicle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "993371474950-rpj80k96ueg63u013sh11noclqn2s6qn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-AHPoPE0h31kBsIaMf6oBx_MBDqmW66w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "993371474950-rpj80k96ueg63u013sh11noclqn2s6qn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
