@@ -18,6 +18,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Register extends AppCompatActivity {
 
@@ -31,6 +33,8 @@ public class Register extends AppCompatActivity {
     private TextView signIn;
 
     private FirebaseAuth fAuth;
+    private DatabaseReference databaseAccount;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,10 +48,12 @@ public class Register extends AppCompatActivity {
         progressBar = findViewById(R.id.registerProgressBar);
         button = findViewById(R.id.registerButton);
         signIn = findViewById(R.id.registerSignIn);
+        checkBox = findViewById(R.id.registerCheckBox);
 
         progressBar.setVisibility(View.INVISIBLE);
 
         fAuth = FirebaseAuth.getInstance();
+        databaseAccount = FirebaseDatabase.getInstance().getReference("account");
 
         signIn.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(), Login.class);
@@ -62,7 +68,12 @@ public class Register extends AppCompatActivity {
             final String iPassword = password.getText().toString();
             final String iVerifyPassword = verifyPassword.getText().toString();
 
-            if (!iPassword.equals(iVerifyPassword)){
+            if (!checkBox.isChecked()){
+                Toast.makeText(getApplicationContext(), "Please click the check box to continue.", Toast.LENGTH_LONG).show();
+                button.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.INVISIBLE);
+            }
+            else if (!iPassword.equals(iVerifyPassword)){
                 Toast.makeText(getApplicationContext(), "Password not match.", Toast.LENGTH_LONG).show();
                 button.setVisibility(View.VISIBLE);
                 progressBar.setVisibility(View.INVISIBLE);
@@ -75,6 +86,9 @@ public class Register extends AppCompatActivity {
             else{
                 fAuth.createUserWithEmailAndPassword(iEmail, iPassword).addOnCompleteListener(task -> {
                     if (task.isSuccessful()){
+                        String id = databaseAccount.push().getKey();
+                        Account account = new Account(id, iName, iEmail);
+                        databaseAccount.child(id).setValue(account);
                         Toast.makeText(getApplicationContext(), "Account created successfully!", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(getApplicationContext(), Login.class);
                         startActivity(intent);

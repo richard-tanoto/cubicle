@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/richa/AndroidStudioProjects/Cubicle/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.26666666666666666" />
+        <entry key="..\:/Users/richa/AndroidStudioProjects/Cubicle/app/src/main/res/drawable/answer.xml" value="0.2703125" />
         <entry key="..\:/Users/richa/AndroidStudioProjects/Cubicle/app/src/main/res/drawable/ask.xml" value="0.1574074074074074" />
         <entry key="..\:/Users/richa/AndroidStudioProjects/Cubicle/app/src/main/res/drawable/buttonfield.xml" value="0.2703125" />
         <entry key="..\:/Users/richa/AndroidStudioProjects/Cubicle/app/src/main/res/drawable/ic_launcher_background.xml" value="0.26666666666666666" />
@@ -20,6 +21,7 @@
         <entry key="..\:/Users/richa/AndroidStudioProjects/Cubicle/app/src/main/res/layout/activity_recovery_link_message.xml" value="0.264" />
         <entry key="..\:/Users/richa/AndroidStudioProjects/Cubicle/app/src/main/res/layout/activity_register.xml" value="0.1" />
         <entry key="..\:/Users/richa/AndroidStudioProjects/Cubicle/app/src/main/res/layout/bottom_nav.xml" value="0.12335359675785208" />
+        <entry key="..\:/Users/richa/AndroidStudioProjects/Cubicle/app/src/main/res/layout/fragment_answer.xml" value="0.24728260869565216" />
         <entry key="..\:/Users/richa/AndroidStudioProjects/Cubicle/app/src/main/res/layout/fragment_ask.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/richa/AndroidStudioProjects/Cubicle/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
         <entry key="..\:/Users/richa/AndroidStudioProjects/Cubicle/app/src/main/res/menu/bottom_nav.xml" value="0.25416666666666665" />
