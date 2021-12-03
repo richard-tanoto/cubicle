@@ -8,7 +8,8 @@ public class Account {
     public String name;
     public String email;
     public boolean verified;
-    public static ArrayList<Question> questionList;
+    public ArrayList<Question> questionList;
+    public ArrayList<Answer> answerList;
 
     public Account(String id, String name, String email){
         this.id = id;
@@ -16,5 +17,14 @@ public class Account {
         this.email = email;
         verified = false;
         questionList = new ArrayList<>();
+        answerList = new ArrayList<>();
+    }
+
+    public void addQuestion(Question question){
+        questionList.add(question);
+    }
+
+    public void answerQuestion(Answer answer){
+        answerList.add(answer);
     }
 }

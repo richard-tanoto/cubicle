@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cubicle">
         <activity
+            android:name=".Activity.PostQuestion"
+            android:exported="false" />
+        <activity
             android:name=".Activity.RecoveryLinkMessage"
             android:exported="false" />
         <activity

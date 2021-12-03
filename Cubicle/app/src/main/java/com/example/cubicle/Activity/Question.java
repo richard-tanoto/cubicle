@@ -31,14 +31,16 @@ public class Question {
     }
 
     private String id;
+    public String accountId;
     public Grade grade;
     public Subject subject;
     public String question;
     public Date date;
     public boolean answered;
 
-    public Question(String id, String question, Grade grade, Subject subject){
+    public Question(String id, String accountId, String question, Grade grade, Subject subject){
         this.id = id;
+        this.accountId = accountId;
         this.question = question;
         this.grade = grade;
         this.subject = subject;

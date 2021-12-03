@@ -20,7 +20,7 @@
                 android:layout_width="155dp"
                 android:layout_height="155dp"
                 android:layout_marginTop="50dp"
-                app:cardBackgroundColor="@color/blue"
+                app:cardBackgroundColor="@color/black"
                 app:cardCornerRadius="250dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -49,22 +49,49 @@
                 android:fontFamily="@font/montserrat_bold"
                 android:layout_marginTop="24dp"
                 android:text="Richard Tanoto"
-                android:textColor="@color/blue"
+                android:textColor="@color/black"
                 android:textSize="24dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_bold"
+                android:orientation="vertical"
                 android:layout_marginTop="24dp"
-                android:text="richard.tanoto@yahoo.com"
-                android:textColor="@color/blue"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/name" />
+                app:layout_constraintTop_toBottomOf="@+id/name">
+
+                <TextView
+                    android:id="@+id/email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/email"
+                    android:drawablePadding="6dp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="richard.tanoto@yahoo.com"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/name" />
+
+                <TextView
+                    android:id="@+id/accountDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:drawableLeft="@drawable/date"
+                    android:drawablePadding="6dp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="joined October 2021"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/email" />
+
+            </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -72,17 +99,19 @@
             android:id="@+id/logoutButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_field"
+            android:background="@drawable/button_logout"
             android:fontFamily="@font/montserrat_regular"
-            android:paddingLeft="49dp"
+            android:paddingLeft="46dp"
             android:paddingTop="5dp"
-            android:paddingRight="49dp"
+            android:paddingRight="46dp"
             android:paddingBottom="5dp"
             android:layout_marginBottom="24dp"
+            android:drawableStart="@drawable/mdi_logout"
+            android:drawablePadding="6dp"
             android:text="Log out"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
