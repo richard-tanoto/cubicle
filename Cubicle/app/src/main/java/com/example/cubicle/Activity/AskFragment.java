@@ -12,24 +12,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.Toast;
+import android.widget.LinearLayout;
 
 import com.example.cubicle.R;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class AskFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private DatabaseReference database;
-    private RecyclerView.Adapter questionAdapter;
-    private ArrayList<Question> questionList;
+    private QuestionAdapter questionAdapter;
     private ImageButton add;
+    private LinearLayout notFound;
+    private ArrayList<Question> arrayList = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -37,31 +39,32 @@ public class AskFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_ask, container, false);
 
-        recyclerView = v.findViewById(R.id.questions);
+        recyclerView = v.findViewById(R.id.questionRecyclerView);
         add = v.findViewById(R.id.add);
-        database = FirebaseDatabase.getInstance().getReference("question");
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        notFound = v.findViewById(R.id.not_found);
 
-        questionList = new ArrayList<>();
-        questionAdapter = new QuestionAdapter(getContext(), questionList);
-        recyclerView.setAdapter(questionAdapter);
+        recyclerView.setHasFixedSize(false);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        database.addValueEventListener(new ValueEventListener() {
+        Query query = FirebaseDatabase.getInstance().getReference().child("question").orderByChild("answered").equalTo(true);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
-                    Question q = dataSnapshot.getValue(Question.class);
-                    questionList.add(q);
+                if (!snapshot.exists()){
+                    notFound.setVisibility(View.VISIBLE);
                 }
-                questionAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getContext(), "Error", Toast.LENGTH_LONG).show();
+
             }
         });
+
+        FirebaseRecyclerOptions<Question> questionOptions = new FirebaseRecyclerOptions.Builder<Question>()
+                .setQuery(query, Question.class).build();
+        questionAdapter = new QuestionAdapter(questionOptions);
+        recyclerView.setAdapter(questionAdapter);
 
         add.setOnClickListener(view -> {
             Intent intent = new Intent(getActivity(), PostQuestion.class);
@@ -69,6 +72,17 @@ public class AskFragment extends Fragment {
         });
 
         return v;
+    }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        questionAdapter.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        questionAdapter.stopListening();
     }
 }

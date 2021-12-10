@@ -9,6 +9,21 @@
     <string name="click_here">
         <u>Click here</u>
     </string>
+    <string-array name="subject_array">
+        <item>Art</item>
+        <item>Biology</item>
+        <item>Chemistry</item>
+        <item>Civic Education</item>
+        <item>Economy</item>
+        <item>English</item>
+        <item>Geography</item>
+        <item>History</item>
+        <item>IT</item>
+        <item>Indonesian</item>
+        <item>Mathematics</item>
+        <item>Physics</item>
+        <item>Others</item>
+    </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

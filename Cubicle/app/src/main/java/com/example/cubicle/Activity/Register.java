@@ -86,7 +86,7 @@ public class Register extends AppCompatActivity {
             else{
                 fAuth.createUserWithEmailAndPassword(iEmail, iPassword).addOnCompleteListener(task -> {
                     if (task.isSuccessful()){
-                        String id = databaseAccount.push().getKey();
+                        String id = fAuth.getCurrentUser().getUid();
                         Account account = new Account(id, iName, iEmail);
                         databaseAccount.child(id).setValue(account);
                         Toast.makeText(getApplicationContext(), "Account created successfully!", Toast.LENGTH_LONG).show();

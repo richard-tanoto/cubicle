@@ -9,30 +9,35 @@
     android:layout_marginRight="30dp"
     android:layout_marginTop="16dp">
     
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="351dp"
         android:layout_height="wrap_content"
         android:orientation="vertical">
         
         <TextView
-            android:id="@+id/question"
+            android:id="@+id/description"
+            android:layout_margin="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_regular"
-            android:text="question here"
+            android:text="question herequestion herequestion herequestion herequestion herequestion herequestion herequestion herequestion herequestion herequestion herequestion here"
             android:textColor="@color/black"
-            android:textSize="14dp"/>
+            android:textSize="14dp"
+            android:maxLines="3"
+            android:ellipsize="end"/>
 
         <TextView
             android:id="@+id/viewAnswer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/description"
+            android:layout_margin="8dp"
             android:fontFamily="@font/montserrat_regular"
             android:text="view answer"
             android:textColor="@color/blue"
-            android:textSize="14dp"/>
+            android:textSize="14dp" />
 
         
-    </LinearLayout>
+    </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".Activity.PostQuestion">
 
+    <TextView
+        android:id="@+id/grade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/montserrat_semibold"
+        android:text="Grade"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header" />
+
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -23,7 +36,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_bold"
+            android:fontFamily="@font/montserrat_semibold"
             android:layout_gravity="center"
             android:text="Add Question"
             android:textColor="@color/white"
@@ -35,9 +48,10 @@
             android:layout_weight="1"/>
 
         <TextView
+            android:id="@+id/add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_bold"
+            android:fontFamily="@font/montserrat_semibold"
             android:padding="10dp"
             android:text="Add"
             android:textColor="@color/white"
@@ -45,61 +59,69 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/grade"
+    <HorizontalScrollView
+        android:id="@+id/gradeScrollView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
-        android:fontFamily="@font/montserrat_semibold"
-        android:text="Grade"
-        android:textColor="@color/black"
-        android:textSize="24sp"
+        android:scrollbars="none"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/header" />
+        app:layout_constraintTop_toBottomOf="@+id/grade">
 
-    <Button
-        android:id="@+id/elementary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/add_field"
-        android:fontFamily="@font/montserrat_medium"
-        android:text="Elementary School"
-        android:textAllCaps="false"
-        android:textSize="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/grade" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
+            <RadioGroup
+                android:id="@+id/gradeRadioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/middle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/add_field"
-        android:fontFamily="@font/montserrat_medium"
-        android:text="Middle School"
-        android:textAllCaps="false"
-        android:textSize="16dp"
-        app:layout_constraintStart_toEndOf="@+id/elementary"
-        app:layout_constraintTop_toBottomOf="@+id/grade" />
+                <RadioButton
+                    android:id="@+id/elementary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/grade_button_selector"
+                    android:button="@null"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:layout_marginRight="8dp"
+                    android:text="Elementary School"
+                    android:textColor="@drawable/grade_text_selector"
+                    android:textAllCaps="false"
+                    android:textSize="16dp"/>
 
-    <Button
-        android:id="@+id/high"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/add_field"
-        android:fontFamily="@font/montserrat_medium"
-        android:text="High School"
-        android:textAllCaps="false"
-        android:textSize="16dp"
-        app:layout_constraintStart_toEndOf="@+id/middle"
-        app:layout_constraintTop_toBottomOf="@+id/grade" />
+                <RadioButton
+                    android:id="@+id/middle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/grade_button_selector"
+                    android:button="@null"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:layout_marginRight="8dp"
+                    android:text="Middle School"
+                    android:textColor="@drawable/grade_text_selector"
+                    android:textAllCaps="false"
+                    android:textSize="16dp"/>
+
+                <RadioButton
+                    android:id="@+id/high"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/grade_button_selector"
+                    android:button="@null"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="High School"
+                    android:textColor="@drawable/grade_text_selector"
+                    android:textAllCaps="false"
+                    android:textSize="16dp"/>
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
 
 
     <TextView
@@ -113,24 +135,16 @@
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/elementary" />
+        app:layout_constraintTop_toBottomOf="@+id/gradeScrollView" />
 
-    <EditText
-        android:id="@+id/subject"
-        android:layout_width="0dp"
+    <Spinner
+        android:id="@+id/subjectSpinner"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="30dp"
-        android:background="@drawable/input_field"
-        android:drawableLeft="@drawable/search"
-        android:ems="10"
-        android:fontFamily="@font/montserrat_regular"
-        android:hint="Search Subject"
-        android:inputType="textPersonName"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:background="@drawable/spinner_background"
+        android:entries="@array/subject_array"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -145,7 +159,7 @@
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/subject" />
+        app:layout_constraintTop_toBottomOf="@+id/subjectSpinner" />
 
     <EditText
         android:id="@+id/question"
@@ -154,7 +168,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="30dp"
-        android:background="@drawable/add_field"
+        android:background="@drawable/grade_button_unselected"
         android:ems="10"
         android:fontFamily="@font/montserrat_regular"
         android:gravity="top"

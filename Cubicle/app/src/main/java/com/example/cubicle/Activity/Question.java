@@ -9,7 +9,7 @@ public class Question {
         ELEMENTARY_SCHOOL,
         MIDDLE_SCHOOL,
         HIGH_SCHOOL,
-        NONE
+        ANY
     }
 
     public enum Subject{
@@ -24,24 +24,26 @@ public class Question {
         CIVIC_EDUCATION,
         ENGLISH,
         INDONESIAN,
-        OTHER_LANGUAGE,
         INFORMATION_TECHNOLOGY,
         OTHERS,
-        NONE
     }
 
-    private String id;
+    public String id;
     public String accountId;
     public Grade grade;
     public Subject subject;
-    public String question;
+    public String desc;
     public Date date;
     public boolean answered;
 
-    public Question(String id, String accountId, String question, Grade grade, Subject subject){
+    public Question(){
+
+    }
+
+    public Question(String id, String accountId,String desc, Grade grade, Subject subject){
         this.id = id;
         this.accountId = accountId;
-        this.question = question;
+        this.desc = desc;
         this.grade = grade;
         this.subject = subject;
         date = Calendar.getInstance().getTime();

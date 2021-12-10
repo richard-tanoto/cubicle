@@ -18,4 +18,8 @@
         parent="Widget.Design.BottomNavigationView">
         <item name="fontFamily">@font/montserrat_regular</item>
     </style>
+
+    <style name="spinnerTheme">
+        <item name="fontFamily">@font/montserrat_regular</item>
+    </style>
 </resources>
